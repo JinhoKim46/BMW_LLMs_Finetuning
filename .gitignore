@@ -1,0 +1,7 @@
+# IDE related 
+.vscode/
+**/__pycache__/
+*.pyc
+
+# Maybe confidential
+*.pdf

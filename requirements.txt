@@ -1,0 +1,29 @@
+--extra-index-url https://download.pytorch.org/whl/cu118
+
+# Pytorch
+torch==2.2.2
+torchvision==0.17.2
+torchaudio==2.2.2
+
+# Crawling & Scraping
+requests
+beautifulsoup4
+lxml
+tqdm
+selenium
+webdriver-manager
+
+# Data Processing
+pandas
+numpy
+python-dateutil
+
+# Hugging Face
+transformers
+datasets
+accelerate
+peft
+tensorboard 
+
+# Developmenting
+jupyter
