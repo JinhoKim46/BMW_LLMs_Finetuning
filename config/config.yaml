@@ -1,0 +1,11 @@
+data:
+  db_root: /mnt/jinho/Development/Projects/2026/BMW_LLMs_finetuning/database
+  output_dir: /mnt/jinho/Development/Projects/2026/BMW_LLMs_finetuning/results
+  crawler:
+    scroll_n: 100
+    max_article_N: 1000
+    sleep_time: 0.7 
+    wait: 2 
+    raw_data_fname: articles_raw.jsonl
+  prepare:
+    processed_data_fname: articles_proc.jsonl
