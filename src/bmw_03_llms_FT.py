@@ -1,4 +1,3 @@
-
 import json
 from datetime import datetime
 from pathlib import Path
@@ -20,7 +19,7 @@ CONFIG_DATA = retrieve_config(CONFIG_PATH, "data")
 CONFIG_LLMS = retrieve_config(CONFIG_PATH, "llms")
 CONFIG_TRAIN = retrieve_config(CONFIG_PATH, "train")
 
-    
+
 set_seed(retrieve_config(CONFIG_PATH, "seed"))  # Set random seed for reproducibility
 
 FT_MODEL_NAMES = {
@@ -31,17 +30,17 @@ FT_MODEL_NAMES = {
 def prep_result_dir(run_name=None):
     # overwrite run_name if it is provided as an argument, otherwise retrieve from config.yaml
     run_name = retrieve_config(CONFIG_PATH, "name") if run_name is None else run_name
-    
+
     result_dir_stem = datetime.now().strftime("%Y%m%d_%H%M%S")
     result_dir_stem += run_name if run_name else ""
-    
+
     out_dir = Path(f"{CONFIG_DATA.get('output_dir', 'results')}/{result_dir_stem}")
     if not out_dir.exists():  # Create out_dir folder
         out_dir.mkdir(parents=True, exist_ok=True)
-        
+
     return out_dir
-        
-        
+
+
 def get_models() -> Dict[str, AutoModelForCausalLM]:
     MODEL_NAME = CONFIG_LLMS.get("model", "gpt2")
     
@@ -75,13 +74,13 @@ def get_models() -> Dict[str, AutoModelForCausalLM]:
 
 def config_LoRA(model_name, model):
     LOGGER.info(f"[{model_name}] Parameters for the LoRA method", level=1)
-    print(json.dumps(CONFIG_LLMS.get("LoRA", {}), indent=4), level=1)
+    print(json.dumps(CONFIG_LLMS.get("LoRA", {}), indent=4))
 
     # 2) Add LoRA (target GPT-2 attention projections)
     lora_cfg = LoraConfig(**CONFIG_LLMS.get("LoRA", {}))
     model = get_peft_model(model, lora_cfg)
     model.print_trainable_parameters()
-    
+
     return model
 
 
@@ -128,35 +127,36 @@ def get_trainer(model, train_ds, eval_ds, data_collator, out_dir:Path):
         eval_dataset=eval_ds,
         data_collator=data_collator,
     )
-    
+
     return trainer
-    
-    
+
+
 def fine_tuning():
+    # TODO: if checkpoint is available in the out_dir, load the checkpoint and resume training. This is needed when the training needs to be stopped and restarted, as the training may take a long time.
     out_dir = prep_result_dir()
-    
+
     train_ds, eval_ds = define_dataset()
-    
+
     train_ds, eval_ds, data_collator, tokenizer = define_tokenizer(train_ds, eval_ds)
-    
+
     models = get_models()
-    
+
     for model_name, model in models.items():
         out_dir_sub = out_dir / model_name
         if not out_dir_sub.exists():  # Create out_dir_sub folder
             out_dir_sub.mkdir(parents=True, exist_ok=True)
-            
+
         model = config_LoRA(model_name, model)
         trainer = get_trainer(model, train_ds, eval_ds, data_collator, out_dir_sub)
-    
+
         trainer.train()
-        
+
         trainer.evaluate()
 
         trainer.save_model(out_dir_sub)
         tokenizer.save_pretrained(out_dir_sub)
-    
+
     return {"out_dir": out_dir, "tokenizer": tokenizer}
-        
+
 if __name__ == "__main__":
     _ = fine_tuning()

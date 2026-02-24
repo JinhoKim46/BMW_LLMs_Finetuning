@@ -19,7 +19,7 @@ CONFIG_LLMS = retrieve_config(CONFIG_PATH, "llms")
 CONFIG_DATA = retrieve_config(CONFIG_PATH, "data")
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-    
+
 set_seed(retrieve_config(CONFIG_PATH, "seed"))  # Set random seed for reproducibility
 
 
@@ -52,17 +52,16 @@ def generate(model: AutoModelForCausalLM, tokenizer:AutoTokenizer, prompt: str):
 def eval_text_gen(prompts: List[str], models:List[Tuple[str, AutoModelForCausalLM]], tokenizer:AutoTokenizer, out_dir:Path):
 
     result = "# BMW-related text Generation\n\n"
-    
+
     for i, p in enumerate(prompts, start=1):
         result += f"## Prompt: {i}: {p}\n\n"
         for model_name, model in models:
             gen_text = generate(model, tokenizer, p)
             result += f"### Model: {model_name}\n\n"
             result += f"{gen_text}\n\n"
-            
+
     with open(out_dir / "report_inference.md", "a") as f:
         f.write(result)
-
 
 
 # @@@@@@@@@@@@@@@@@@@@@@@
@@ -84,7 +83,7 @@ def extract_answer(full_text):
     return full_text.strip().split("\n")[0]
 
 
-def generate_answer(model, question):
+def generate_answer(model: AutoModelForCausalLM, question: str, tokenizer: AutoTokenizer):
     prompt = f"Q: {question}\nA:"
     inputs = tokenizer(prompt, return_tensors="pt").to(DEVICE)
 
@@ -102,7 +101,8 @@ def generate_answer(model, question):
     decoded = tokenizer.decode(output_ids[0], skip_special_tokens=True)
     return extract_answer(decoded)
 
-def compute_bertscore(df, model_name, scorer_model="distilbert-base-uncased"):
+
+def compute_bertscore(df, model_name: str, scorer_model="distilbert-base-uncased"):
     cands = df["prediction"].tolist()
     refs = df["reference"].tolist()
 
@@ -126,12 +126,12 @@ def compute_bertscore(df, model_name, scorer_model="distilbert-base-uncased"):
 def eval_QnA(QnA: List[str], models:List[Tuple[str, AutoModelForCausalLM]], tokenizer:AutoTokenizer, out_dir:Path):
 
     result = "# BMW-related Q&A\n\n"
-    
+
     all_results = []    
     for model_name, model in models:
         result_per_model = []
         for qna in QnA:
-            pred = generate_answer(model, qna["question"])
+            pred = generate_answer(model, qna["question"], tokenizer)
             ref = qna["answer"]
 
             p, r, f1 = bert_score(
@@ -186,18 +186,18 @@ def eval_QnA(QnA: List[str], models:List[Tuple[str, AutoModelForCausalLM]], toke
 
     with open(out_dir / "report_inference.md", "a") as f:
         f.write(result)
-        
-        
+
+
 def evaluation(out_dir: Path, tokenizer: AutoTokenizer):
     base_model_name = CONFIG_LLMS.get("model", "gpt2")
     comparing_models = get_comparing_models(tokenizer, out_dir, base_model_name)
-    
+
     db_root = CONFIG_DATA.get("db_root", "database")
     with open(f"{db_root}/prompt.txt", "r") as f:
         prompts = [i.strip() for i in f.readlines()]    
     LOGGER.info(f"Loaded {len(prompts)} prompts for evaluation.")
     eval_text_gen(prompts, comparing_models, tokenizer, out_dir)
-    
+
     qna_path = Path(db_root) / "qna.jsonl"
     if not qna_path.exists():
         qna_path = Path(db_root) / "QnA.jsonl"
@@ -205,8 +205,8 @@ def evaluation(out_dir: Path, tokenizer: AutoTokenizer):
     qna = load_qna(qna_path)
     LOGGER.info(f"Loaded {len(qna)} Q&A pairs for evaluation.")
     eval_QnA(qna, comparing_models, tokenizer, out_dir)
-    
-    
+
+
 if __name__ == "__main__":   
     out_dir = Path("/mnt/jinho/Development/Projects/2026/BMW_LLMs_finetuning/results/20260224_134636")
     
