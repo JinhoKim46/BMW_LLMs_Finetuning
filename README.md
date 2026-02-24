@@ -165,7 +165,7 @@ LoRA reduces trainable parameters to ~1.4M for both variants; the difference bet
 ------------------------------------------------------------------------
 
 # 9. Quick Start
-
+[NOTE] This project was built on a Linux environment with an NVIDIA RTX 4070 Ti GPU. Adjustments may be needed for other setups.
 ```bash
 # 1. Create and activate environment
 conda create -n bmw_llms python=3.10 -y
