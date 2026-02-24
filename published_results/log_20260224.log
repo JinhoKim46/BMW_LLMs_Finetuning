@@ -1,0 +1,195 @@
+[2026-02-24 02:05:36] [ INFO  ] [  article_crawler   ] Expanding all articles by clicking 'Show more' button...
+[2026-02-24 02:05:38] [ INFO  ] [  article_crawler   ]   Scrolling to load all articles...
+[2026-02-24 02:07:19] [ INFO  ] [  article_crawler   ]   Finished scrolling after 100.93 seconds.
+[2026-02-24 02:07:20] [ INFO  ] [  article_crawler   ] Creating database directory at /mnt/jinho/Development/Projects/2026/BMW_LLMs_finetuning/database...
+[2026-02-24 02:07:20] [ INFO  ] [  article_crawler   ] Start crawling articles...
+[2026-02-24 03:15:07] [ INFO  ] [  article_crawler   ] Total loaded articles: 1720
+[2026-02-24 03:15:07] [ INFO  ] [  article_crawler   ] Elapsed time for crawling articles: 4067.47 seconds
+[2026-02-24 07:49:47] [ INFO  ] [  article_crawler   ] Expanding all articles by clicking 'Show more' button...
+[2026-02-24 07:49:48] [ INFO  ] [  article_crawler   ]   Scrolling 100 times to load articles...
+[2026-02-24 07:51:30] [ INFO  ] [  article_crawler   ]   Finished scrolling after 101.22 seconds.
+[2026-02-24 07:51:31] [ INFO  ] [  article_crawler   ] Start crawling articles...
+[2026-02-24 08:19:30] [ INFO  ] [  article_crawler   ] Expanding all articles by clicking 'Show more' button...
+[2026-02-24 08:19:31] [ INFO  ] [  article_crawler   ]   Scrolling 100 times to load articles...
+[2026-02-24 08:19:52] [ INFO  ] [  article_crawler   ]   Finished scrolling after 21.06 seconds.
+[2026-02-24 08:19:52] [ INFO  ] [  article_crawler   ] Start crawling articles...
+[2026-02-24 08:24:43] [ INFO  ] [  article_crawler   ] Expanding all articles by clicking 'Show more' button...
+[2026-02-24 08:24:43] [ INFO  ] [  article_crawler   ]   Scrolling 100 times to load articles...
+[2026-02-24 08:25:04] [ INFO  ] [  article_crawler   ]   Finished scrolling after 21.07 seconds.
+[2026-02-24 08:25:05] [ INFO  ] [  article_crawler   ] Start crawling articles...
+[2026-02-24 08:35:50] [ INFO  ] [  article_crawler   ] Expanding all articles by clicking 'Show more' button...
+[2026-02-24 08:35:50] [ INFO  ] [  article_crawler   ]   Scrolling 100 times to load articles...
+[2026-02-24 08:37:31] [ INFO  ] [  article_crawler   ]   Finished scrolling after 101.23 seconds.
+[2026-02-24 08:37:32] [ INFO  ] [  article_crawler   ] Start crawling articles...
+[2026-02-24 08:41:35] [ INFO  ] [  article_crawler   ] Expanding all articles by clicking 'Show more' button...
+[2026-02-24 08:41:36] [ INFO  ] [  article_crawler   ]   Scrolling 100 times to load articles...
+[2026-02-24 08:42:47] [ INFO  ] [  article_crawler   ]   Finished scrolling after 71.27 seconds.
+[2026-02-24 08:42:48] [ INFO  ] [  article_crawler   ] Start crawling articles...
+[2026-02-24 08:44:10] [ INFO  ] [  article_crawler   ] Expanding all articles by clicking 'Show more' button...
+[2026-02-24 08:44:11] [ INFO  ] [  article_crawler   ]   Scrolling 10 times to load articles...
+[2026-02-24 08:44:18] [ INFO  ] [  article_crawler   ]   Finished scrolling after 7.14 seconds.
+[2026-02-24 08:44:18] [ INFO  ] [  article_crawler   ] Start crawling articles...
+[2026-02-24 08:45:24] [ INFO  ] [  article_crawler   ] Expanding all articles by clicking 'Show more' button...
+[2026-02-24 08:45:25] [ INFO  ] [  article_crawler   ]   Scrolling 10 times to load articles...
+[2026-02-24 08:45:32] [ INFO  ] [  article_crawler   ]   Finished scrolling after 7.11 seconds.
+[2026-02-24 08:45:33] [ INFO  ] [  article_crawler   ] Start crawling articles...
+[2026-02-24 08:47:49] [ INFO  ] [  article_crawler   ] Expanding all articles by clicking 'Show more' button...
+[2026-02-24 08:47:50] [ INFO  ] [  article_crawler   ]   Scrolling 100 times to load articles...
+[2026-02-24 08:48:08] [ INFO  ] [  article_crawler   ] Expanding all articles by clicking 'Show more' button...
+[2026-02-24 08:48:09] [ INFO  ] [  article_crawler   ]   Scrolling 100 times to load articles...
+[2026-02-24 08:49:20] [ INFO  ] [  article_crawler   ]   Finished scrolling after 71.28 seconds.
+[2026-02-24 08:49:21] [ INFO  ] [  article_crawler   ] Start crawling articles...
+[2026-02-24 09:20:03] [ INFO  ] [  article_crawler   ] Total loaded articles: 1000
+[2026-02-24 09:20:03] [ INFO  ] [  article_crawler   ] Elapsed time for crawling articles: 1841.86 seconds
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 0, article_id: 560519
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 32, article_id: 559536
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 55, article_id: 558538
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 233, article_id: 554191
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 241, article_id: 553938
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 392, article_id: 550426
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 668, article_id: 543269
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 741, article_id: 541955
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 771, article_id: 540785
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 822, article_id: 539299
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 828, article_id: 540974
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 875, article_id: 545442
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 883, article_id: 537674
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 905, article_id: 537188
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 932, article_id: 536300
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 960, article_id: 536676
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 963, article_id: 535795
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 977, article_id: 535226
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 989, article_id: 535088
+[2026-02-24 09:31:59] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 992, article_id: 556449
+[2026-02-24 09:31:59] [ INFO  ] [    data_prepare    ] Finished preprocessing articles. Total time: 0.33 seconds. Omitted 20 articles with empty text.
+[2026-02-24 13:46:37] [ INFO  ] [        llms        ]   Fine-tuning model with full depth was added!
+[2026-02-24 13:46:37] [ INFO  ] [        llms        ]   Fine-tuning model with Minus 1 block (M1B) depth was added!
+[2026-02-24 13:46:37] [ INFO  ] [        llms        ]   [FT_full] Parameters for the LoRA method
+[2026-02-24 13:46:37] [ INFO  ] [        llms        ]   {
+    "r": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05,
+    "bias": "none",
+    "task_type": "CAUSAL_LM",
+    "target_modules": [
+        "c_attn"
+    ]
+}
+[2026-02-24 13:46:55] [ INFO  ] [        llms        ]   [FT-M1B] Parameters for the LoRA method
+[2026-02-24 13:46:55] [ INFO  ] [        llms        ]   {
+    "r": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05,
+    "bias": "none",
+    "task_type": "CAUSAL_LM",
+    "target_modules": [
+        "c_attn"
+    ]
+}
+[2026-02-24 14:42:24] [ INFO  ] [ llms - evaluation  ] Loaded 3 prompts for evaluation.
+[2026-02-24 14:42:28] [ INFO  ] [ llms - evaluation  ] Loaded 20 Q&A pairs for evaluation.
+[2026-02-24 14:53:59] [ INFO  ] [    E2E workflow    ] Starting end-to-end workflow for BMW-related LLM fine-tuning and evaluation!
+[2026-02-24 14:54:28] [ INFO  ] [    E2E workflow    ] Starting end-to-end workflow for BMW-related LLM fine-tuning and evaluation!
+[2026-02-24 14:54:28] [ INFO  ] [    E2E workflow    ]   Workflow steps to execute: ['crawl', 'prepare', 'train', 'evaluate']
+[2026-02-24 14:54:28] [ INFO  ] [    E2E workflow    ]   Running step: crawl
+[2026-02-24 14:54:30] [ INFO  ] [  article_crawler   ] Expanding all articles by clicking 'Show more' button...
+[2026-02-24 14:54:30] [ INFO  ] [  article_crawler   ]   Scrolling 100 times to load articles...
+[2026-02-24 14:55:41] [ INFO  ] [  article_crawler   ]   Finished scrolling after 71.18 seconds.
+[2026-02-24 14:55:43] [ INFO  ] [  article_crawler   ] Creating database directory at /mnt/jinho/Development/Projects/2026/BMW_LLMs_finetuning/database...
+[2026-02-24 14:55:43] [ INFO  ] [  article_crawler   ] Start crawling articles...
+[2026-02-24 15:26:07] [ INFO  ] [  article_crawler   ] Total loaded articles: 1000
+[2026-02-24 15:26:07] [ INFO  ] [  article_crawler   ] Elapsed time for crawling articles: 1824.39 seconds
+[2026-02-24 15:26:07] [ INFO  ] [    E2E workflow    ]   Running step: prepare
+[2026-02-24 15:26:07] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 0, article_id: 560571
+[2026-02-24 15:26:07] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 33, article_id: 559536
+[2026-02-24 15:26:07] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 56, article_id: 558538
+[2026-02-24 15:26:07] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 234, article_id: 554191
+[2026-02-24 15:26:07] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 242, article_id: 553938
+[2026-02-24 15:26:07] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 393, article_id: 550426
+[2026-02-24 15:26:07] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 669, article_id: 543269
+[2026-02-24 15:26:08] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 742, article_id: 541955
+[2026-02-24 15:26:08] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 772, article_id: 540785
+[2026-02-24 15:26:08] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 823, article_id: 539299
+[2026-02-24 15:26:08] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 829, article_id: 540974
+[2026-02-24 15:26:08] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 876, article_id: 545442
+[2026-02-24 15:26:08] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 884, article_id: 537674
+[2026-02-24 15:26:08] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 906, article_id: 537188
+[2026-02-24 15:26:08] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 933, article_id: 536300
+[2026-02-24 15:26:08] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 961, article_id: 536676
+[2026-02-24 15:26:08] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 964, article_id: 535795
+[2026-02-24 15:26:08] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 978, article_id: 535226
+[2026-02-24 15:26:08] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 990, article_id: 535088
+[2026-02-24 15:26:08] [WARNING] [    data_prepare    ] Omitting article with missing fields. idx: 993, article_id: 556449
+[2026-02-24 15:26:08] [ INFO  ] [    data_prepare    ] Finished preprocessing articles. Total time: 0.16 seconds. Omitted 20 articles with empty text.
+[2026-02-24 15:26:08] [WARNING] [    E2E workflow    ]   Unknown workflow step: train. Skipping.
+[2026-02-24 15:26:08] [WARNING] [    E2E workflow    ]   Unknown workflow step: evaluate. Skipping.
+[2026-02-24 15:27:39] [ INFO  ] [    E2E workflow    ] Starting end-to-end workflow for BMW-related LLM fine-tuning and evaluation!
+[2026-02-24 15:27:39] [ INFO  ] [    E2E workflow    ]   Workflow steps to execute: ['ft', 'eval']
+[2026-02-24 15:27:39] [ INFO  ] [    E2E workflow    ]   Running step: ft
+[2026-02-24 15:27:41] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with full depth was added!
+[2026-02-24 15:27:41] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with Minus 1 block (M1B) depth was added!
+[2026-02-24 15:27:41] [ INFO  ] [ llms - fine-tuning ]   [FT_full] Parameters for the LoRA method
+[2026-02-24 15:27:58] [ INFO  ] [    E2E workflow    ] Starting end-to-end workflow for BMW-related LLM fine-tuning and evaluation!
+[2026-02-24 15:27:58] [ INFO  ] [    E2E workflow    ]   Workflow steps to execute: ['ft', 'eval']
+[2026-02-24 15:27:58] [ INFO  ] [    E2E workflow    ]   Running step: ft
+[2026-02-24 15:27:59] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with full depth was added!
+[2026-02-24 15:27:59] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with Minus 1 block (M1B) depth was added!
+[2026-02-24 15:27:59] [ INFO  ] [ llms - fine-tuning ]   [FT_full] Parameters for the LoRA method
+[2026-02-24 15:30:12] [ INFO  ] [    E2E workflow    ] Starting end-to-end workflow for BMW-related LLM fine-tuning and evaluation!
+[2026-02-24 15:30:12] [ INFO  ] [    E2E workflow    ]   Workflow steps to execute: ['ft', 'eval']
+[2026-02-24 15:30:12] [ INFO  ] [    E2E workflow    ]   Running step: ft
+[2026-02-24 15:30:13] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with full depth was added!
+[2026-02-24 15:30:14] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with Minus 1 block (M1B) depth was added!
+[2026-02-24 15:30:14] [ INFO  ] [ llms - fine-tuning ]   [FT_full] Parameters for the LoRA method
+[2026-02-24 15:30:45] [ INFO  ] [ llms - fine-tuning ]   [FT-M1B] Parameters for the LoRA method
+[2026-02-24 15:31:14] [ INFO  ] [    E2E workflow    ]   Running step: eval
+[2026-02-24 15:32:58] [ INFO  ] [    E2E workflow    ] Starting end-to-end workflow for BMW-related LLM fine-tuning and evaluation!
+[2026-02-24 15:32:58] [ INFO  ] [    E2E workflow    ]   Workflow steps to execute: ['ft', 'eval']
+[2026-02-24 15:32:58] [ INFO  ] [    E2E workflow    ]   Running step: ft
+[2026-02-24 15:32:59] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with full depth was added!
+[2026-02-24 15:33:00] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with Minus 1 block (M1B) depth was added!
+[2026-02-24 15:33:00] [ INFO  ] [ llms - fine-tuning ]   [FT_full] Parameters for the LoRA method
+[2026-02-24 15:33:32] [ INFO  ] [ llms - fine-tuning ]   [FT-M1B] Parameters for the LoRA method
+[2026-02-24 15:34:01] [ INFO  ] [    E2E workflow    ]   Running step: eval
+[2026-02-24 15:34:48] [ INFO  ] [    E2E workflow    ] Starting end-to-end workflow for BMW-related LLM fine-tuning and evaluation!
+[2026-02-24 15:34:48] [ INFO  ] [    E2E workflow    ]   Workflow steps to execute: ['ft', 'eval']
+[2026-02-24 15:34:48] [ INFO  ] [    E2E workflow    ]   Running step: ft
+[2026-02-24 15:34:49] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with full depth was added!
+[2026-02-24 15:34:50] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with Minus 1 block (M1B) depth was added!
+[2026-02-24 15:34:50] [ INFO  ] [ llms - fine-tuning ]   [FT_full] Parameters for the LoRA method
+[2026-02-24 15:35:22] [ INFO  ] [ llms - fine-tuning ]   [FT-M1B] Parameters for the LoRA method
+[2026-02-24 15:35:51] [ INFO  ] [    E2E workflow    ]   Running step: eval
+[2026-02-24 15:35:52] [ INFO  ] [ llms - evaluation  ] Loaded 3 prompts for evaluation.
+[2026-02-24 15:35:56] [ INFO  ] [ llms - evaluation  ] Loaded 20 Q&A pairs for evaluation.
+[2026-02-24 15:37:13] [ INFO  ] [    E2E workflow    ] Starting end-to-end workflow for BMW-related LLM fine-tuning and evaluation!
+[2026-02-24 15:37:13] [ INFO  ] [    E2E workflow    ]   Workflow steps to execute: ['ft', 'eval']
+[2026-02-24 15:37:13] [ INFO  ] [    E2E workflow    ]   Running step: ft
+[2026-02-24 15:37:14] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with full depth was added!
+[2026-02-24 15:37:14] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with Minus 1 block (M1B) depth was added!
+[2026-02-24 15:37:14] [ INFO  ] [ llms - fine-tuning ]   [FT_full] Parameters for the LoRA method
+[2026-02-24 15:37:46] [ INFO  ] [ llms - fine-tuning ]   [FT-M1B] Parameters for the LoRA method
+[2026-02-24 15:38:15] [ INFO  ] [    E2E workflow    ]   Running step: eval
+[2026-02-24 15:38:16] [ INFO  ] [ llms - evaluation  ] Loaded 3 prompts for evaluation.
+[2026-02-24 15:38:19] [ INFO  ] [ llms - evaluation  ] Loaded 20 Q&A pairs for evaluation.
+[2026-02-24 15:41:52] [ INFO  ] [    E2E workflow    ] Starting end-to-end workflow for BMW-related LLM fine-tuning and evaluation!
+[2026-02-24 15:41:52] [ INFO  ] [    E2E workflow    ]   Workflow steps to execute: ['ft', 'eval']
+[2026-02-24 15:41:52] [ INFO  ] [    E2E workflow    ]   Running step: ft
+[2026-02-24 15:41:53] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with full depth was added!
+[2026-02-24 15:41:54] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with Minus 1 block (M1B) depth was added!
+[2026-02-24 15:41:54] [ INFO  ] [ llms - fine-tuning ]   [FT_full] Parameters for the LoRA method
+[2026-02-24 16:50:03] [ INFO  ] [    E2E workflow    ] Starting end-to-end workflow for BMW-related LLM fine-tuning and evaluation!
+[2026-02-24 16:50:03] [ INFO  ] [    E2E workflow    ]   Workflow steps to execute: ['ft', 'eval']
+[2026-02-24 16:50:03] [ INFO  ] [    E2E workflow    ]   Running step: ft
+[2026-02-24 16:50:04] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with full depth was added!
+[2026-02-24 16:50:05] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with Minus 1 block (M1B) depth was added!
+[2026-02-24 16:50:05] [ INFO  ] [ llms - fine-tuning ]   [FT_full] Parameters for the LoRA method
+[2026-02-24 16:52:49] [ INFO  ] [    E2E workflow    ] Starting end-to-end workflow for BMW-related LLM fine-tuning and evaluation!
+[2026-02-24 16:52:49] [ INFO  ] [    E2E workflow    ]   Workflow steps to execute: ['ft', 'eval']
+[2026-02-24 16:52:49] [ INFO  ] [    E2E workflow    ]   Running step: ft
+[2026-02-24 16:52:50] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with full depth was added!
+[2026-02-24 16:52:50] [ INFO  ] [ llms - fine-tuning ]   Fine-tuning model with Minus 1 block (M1B) depth was added!
+[2026-02-24 16:52:50] [ INFO  ] [ llms - fine-tuning ]   [FT_full] Parameters for the LoRA method
+[2026-02-24 17:02:34] [ INFO  ] [ llms - fine-tuning ]   [FT-M1B] Parameters for the LoRA method
+[2026-02-24 17:12:00] [ INFO  ] [    E2E workflow    ]   Running step: eval
+[2026-02-24 17:12:02] [ INFO  ] [ llms - evaluation  ] Loaded 3 prompts for evaluation.
+[2026-02-24 17:12:25] [ INFO  ] [ llms - evaluation  ] Loaded 20 Q&A pairs for evaluation.

@@ -30,4 +30,4 @@ tensorboard
 jupyter
 
 # Evaluation
-bert-score=0.3.13
+bert-score==0.3.13

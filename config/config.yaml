@@ -1,11 +1,55 @@
+name: null # Training log name that is attahced after the timestamp. If null, only the timestamp will be used.
+seed: 42
+workflow: # [crawl, prepare, ft, eval]
+  # - crawl
+  # - prepare
+  - ft
+  - eval
 data:
   db_root: /mnt/jinho/Development/Projects/2026/BMW_LLMs_finetuning/database
   output_dir: /mnt/jinho/Development/Projects/2026/BMW_LLMs_finetuning/results
+  regenerate: False # whether to re-run the crawling and preparation steps if the output files already exist
   crawler:
     scroll_n: 100
     max_article_N: 1000
-    sleep_time: 0.7 
-    wait: 2 
+    sleep_time: 0.7
+    wait: 2
     raw_data_fname: articles_raw.jsonl
   prepare:
     processed_data_fname: articles_proc.jsonl
+llms:
+  model: gpt2-large
+  tokenizer:
+    max_length: 512
+    truncation: True
+    padding: False
+  LoRA:
+    r: 8
+    lora_alpha: 16 # Rule of thumb: alpha = 2*r
+    lora_dropout: 0.05
+    bias: none
+    task_type: CAUSAL_LM
+    target_modules:
+      - c_attn
+  variations: # [first, mid, last, random, none]
+    - none
+    - last
+train:
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 8
+  learning_rate: 0.005
+  num_train_epochs: 10
+  fp16: True
+  eval_strategy: epoch
+  save_strategy: epoch
+  save_total_limit: 2
+  logging_steps: 20
+  report_to: tensorboard
+generation:
+    max_new_tokens: 300
+    do_sample: True
+    temperature: 0.8
+    top_p: 0.9
+    repetition_penalty: 1.1
+    eos_token_id: null # set to tokenizer.eos_token_id if not None
