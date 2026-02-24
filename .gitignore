@@ -8,3 +8,7 @@
 
 # Ignore data files
 database/
+
+# Ignore logs and checkpoints
+logs/
+results/
