@@ -15,13 +15,13 @@ webdriver-manager
 
 # Data Processing
 pandas
-numpy
+numpy<2
 python-dateutil
 
 # Hugging Face
-transformers
-datasets
-accelerate
+transformers==4.44.2
+datasets==2.20.0
+accelerate==0.33.0
 peft
 tensorboard 
 
