@@ -29,17 +29,30 @@ WORKFLOW_FNS = {
 
 def run():
     LOGGER.info("Starting end-to-end workflow for BMW-related LLM fine-tuning and evaluation!", level=0)
-    
+
+    # TODO: add argparser for configurations so that users can easily modify the configs by passing arguments in command line.
+
     workflow = retrieve_config(CONFIG_PATH, "workflow")
     LOGGER.info(f"Workflow steps to execute: {workflow}", level=1)
-    
+
     for step in workflow:
         if step in WORKFLOW_FNS:
             LOGGER.info(f"Running step: {step}", level=1)
-            WORKFLOW_FNS[step]()
+            if step == "ft":
+                to_eval = WORKFLOW_FNS[step]()
+            elif step == "eval":
+                if not isinstance(to_eval, dict):
+                    LOGGER.error(
+                        "Fine-tuning step did not return the expected output for evaluation. Skipping evaluation step.",
+                        level=1,
+                    )
+                    continue
+                WORKFLOW_FNS[step](**to_eval)
+            else:
+                WORKFLOW_FNS[step]()
         else:
             LOGGER.warning(f"Unknown workflow step: {step}. Skipping.", level=1)
-            
-            
+
+
 if __name__ == "__main__":
     run()
