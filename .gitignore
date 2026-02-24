@@ -5,3 +5,6 @@
 
 # Maybe confidential
 *.pdf
+
+# Ignore data files
+database/
