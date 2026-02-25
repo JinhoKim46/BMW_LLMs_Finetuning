@@ -98,6 +98,7 @@ Training loss is monitored via TensorBoard.
 Figure 1 shows that GPT-2 Large significantly outperforms GPT-2, confirming that model size matters. From top to bottom: GPT-2+FT_M1B (sky blue), GPT-2+FT_full (red), GPT-2 Large+FT_M1B (dark blue), GPT-2 Large+FT_full (orange).
 
 ![Loss curves](figures/loss_curves.png)
+
 *Figure 1. Training and validation loss curves for GPT-2 vs. GPT-2 Large (FT_full and FT_M1B variants shown).*
 
 ### Trainable Parameters (LoRA)
@@ -117,6 +118,7 @@ Both variants train ~0.38% of total parameters — the layer removal has negligi
 FT_full (Magenta) achieves lower train/validation loss than FT_M1B (Green).
 
 ![Train loss-optim](figures/FT_full_VS_M1B_train_loss_optim.png) ![Eval loss-opim](figures/FT_full_VS_M1B_eval_loss_optim.png)
+
 *Figure 2. Training and validation loss curves for FT_full vs. FT_M1B.*
 
 Except for BERTScore recall, FT_full outperforms FT_M1B across all metrics, suggesting that the last transformer layer contributes to overall performance.
@@ -128,7 +130,6 @@ Except for BERTScore recall, FT_full outperforms FT_M1B across all metrics, sugg
 | base | 3.8015 | 0.7042 | 0.7647 | 0.7325 |
 | FT_full | **2.9150** | **0.7163** | 0.7615 | **0.7379** |
 | FT-M1B | 3.0098 | 0.6988 | **0.7649** | 0.7295 |
-
 
 The full evaluation report is provided in `published-results/sample_result/report_inference.md`.
 
