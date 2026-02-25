@@ -4,6 +4,7 @@ from shutil import copy2, copytree, ignore_patterns
 
 import pandas as pd
 import yaml
+from transformers import AutoTokenizer
 
 
 def retrieve_config(config_path, key):
@@ -57,17 +58,29 @@ def gen_md_table(result: str, summary: pd.DataFrame):
         return f"**{text}**" if is_best else text
 
     result += "## Q&A BERTScore Summary\n\n"
-    result += "| model | bert_p | bert_r | bert_f1 | nll |\n"
+    result += "| model | nll | bert_p | bert_r | bert_f1 |\n"
     result += "|---|---:|---:|---:|---:|\n"
     for _, row in summary.iterrows():
         result += (
             f"| {row['model']} | "
+            f"{_fmt(float(row['nll']), nll_MinMax, False)} | "
             f"{_fmt(float(row['bert_p']), bert_p_MinMax)} | "
             f"{_fmt(float(row['bert_r']), bert_r_MinMax)} | "
-            f"{_fmt(float(row['bert_f1']), bert_f1_MinMax)} | "
-            f"{_fmt(float(row['nll']), nll_MinMax, False)} |\n"
+            f"{_fmt(float(row['bert_f1']), bert_f1_MinMax)} |\n"
         )
     result += "\n"
 
     return result
     return result
+
+
+def prep_eval_wo_ft(config_path):
+    config_data = retrieve_config(config_path, "data")
+    config_llms = retrieve_config(config_path, "llms")
+    run_name = retrieve_config(config_path, "name")
+    out_dir = Path(config_data["output_dir"]) / str(run_name)
+
+    tokenizer = AutoTokenizer.from_pretrained(config_llms.get("model", "gpt2"), use_fast=True)
+    tokenizer.pad_token = tokenizer.eos_token
+
+    return {"out_dir": out_dir, "tokenizer": tokenizer}

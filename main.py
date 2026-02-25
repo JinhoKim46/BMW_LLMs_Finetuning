@@ -7,7 +7,7 @@ from src.bmw_02_data_prepare import preprocess_article
 from src.bmw_03_llms_FT import fine_tuning
 from src.bmw_04_llms_eval import evaluation
 from src.logger import get_logger
-from src.utils import retrieve_config
+from src.utils import prep_eval_wo_ft, retrieve_config
 
 LOGGER = get_logger("E2E workflow")
 
@@ -35,18 +35,15 @@ def run():
     workflow = retrieve_config(CONFIG_PATH, "workflow")
     LOGGER.info(f"Workflow steps to execute: {workflow}", level=1)
 
+    to_eval = None
     for step in workflow:
         if step in WORKFLOW_FNS:
             LOGGER.info(f"Running step: {step}", level=1)
             if step == "ft":
                 to_eval = WORKFLOW_FNS[step]()
             elif step == "eval":
-                if not isinstance(to_eval, dict):
-                    LOGGER.error(
-                        "Fine-tuning step did not return the expected output for evaluation. Skipping evaluation step.",
-                        level=1,
-                    )
-                    continue
+                if to_eval is None:
+                    to_eval = prep_eval_wo_ft(CONFIG_PATH)
                 WORKFLOW_FNS[step](**to_eval)
             else:
                 WORKFLOW_FNS[step]()

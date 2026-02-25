@@ -134,6 +134,8 @@ def eval_QnA(QnA: List[str], models:List[Tuple[str, AutoModelForCausalLM]], toke
     all_results = []    
     for model_name, model in models:
         result_per_model = []
+
+        # TODO: Batch processing to compute metrics, not per question-answer pair.
         for qna in QnA:
             pred = generate_answer(model, qna["question"], tokenizer)
             ref = qna["answer"]
@@ -165,12 +167,18 @@ def eval_QnA(QnA: List[str], models:List[Tuple[str, AutoModelForCausalLM]], toke
 
         all_results.extend(result_per_model)            
     all_results_df = pd.DataFrame(all_results)
+    model_order = [name for name, _ in models]
     summary = (
-        all_results_df.groupby("model", as_index=False)
-        .agg(bert_p=("bert_p", "mean"), bert_r=("bert_r", "mean"), bert_f1=("bert_f1", "mean"), nll=("nll", "mean"))
-        .sort_values("bert_p")
+        all_results_df.assign(model=pd.Categorical(all_results_df["model"], categories=model_order, ordered=True))
+        .groupby("model", sort=False, observed=True)
+        .agg(
+            nll=("nll", "mean"),
+            bert_p=("bert_p", "mean"),
+            bert_r=("bert_r", "mean"),
+            bert_f1=("bert_f1", "mean"),
+        )
+        .reset_index()
     )
-
     result = gen_md_table(result, summary)
     with open(out_dir / "report_inference.md", "a") as f:
         f.write(result)
