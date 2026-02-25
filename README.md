@@ -66,6 +66,11 @@ Cleans noise and boilerplate from raw articles. Concatenates `<Title>`, `<Teaser
 # 5. Model Fine-Tuning — `bmw_03_llms_FT.py`
 
 **Model:** GPT-2 Large — balances performance and memory (~7–8 GB VRAM on RTX 4070 Ti 12 GB).
+- Trianing hyper-parameters:
+  - Epochs: 10
+  - Batch size: 1
+  - Learning rate: 5e-5
+  - fp16: True (mixed precision)
 
 **Method:** Low-Rank Adaptation (LoRA) for parameter-efficient fine-tuning.
 
