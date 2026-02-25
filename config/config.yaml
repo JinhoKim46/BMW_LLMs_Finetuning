@@ -1,4 +1,5 @@
-name: null # Training log name that is attahced after the timestamp. If null, only the timestamp will be used.
+name: null # Training log name for resuming training or evaluating a specific checkpoint. If null, the current timestamp will be used as the log name.
+note: null # Training note that is attahced after the timestamp. If null, only the timestamp will be used.
 seed: 42
 workflow: # [crawl, prepare, ft, eval]
   # - crawl
@@ -24,8 +25,8 @@ llms:
     truncation: True
     padding: False
   LoRA:
-    r: 8
-    lora_alpha: 16 # Rule of thumb: alpha = 2*r
+    r: 16
+    lora_alpha: 32 # Rule of thumb: alpha = 2*r
     lora_dropout: 0.05
     bias: none
     task_type: CAUSAL_LM
@@ -38,7 +39,7 @@ train:
   per_device_train_batch_size: 1
   per_device_eval_batch_size: 1
   gradient_accumulation_steps: 8
-  learning_rate: 0.005
+  learning_rate: 0.0005
   num_train_epochs: 10
   fp16: True
   eval_strategy: epoch
