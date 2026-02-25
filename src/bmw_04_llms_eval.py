@@ -9,7 +9,7 @@ from peft import AutoPeftModelForCausalLM
 from transformers import AutoModelForCausalLM, AutoTokenizer, set_seed
 
 from logger import get_logger
-from utils import retrieve_config
+from utils import gen_md_table, retrieve_config
 
 LOGGER = get_logger("llms - evaluation")
 
@@ -27,9 +27,9 @@ set_seed(retrieve_config(CONFIG_PATH, "seed"))  # Set random seed for reproducib
 # BMW-related text generation
 def get_comparing_models(tokenizer:AutoTokenizer, out_dir:Path, base_model_name: str) -> List[Tuple[str, AutoModelForCausalLM]]:
     # Assume that result directories are in out_dir/model_name
-    ft_model_roots = [p for p in out_dir.iterdir() if p.is_dir()]
+    ft_model_roots = [p for p in out_dir.iterdir() if p.is_dir() if p.stem not in ["script_dump"]]
     comparing_models = []   
-    
+
     base = AutoModelForCausalLM.from_pretrained(base_model_name, torch_dtype="auto").to(DEVICE)
     base.config.pad_token_id = tokenizer.eos_token_id
     base.eval()
@@ -40,7 +40,7 @@ def get_comparing_models(tokenizer:AutoTokenizer, out_dir:Path, base_model_name:
         ft_model.config.pad_token_id = tokenizer.eos_token_id
         ft_model.eval()
         comparing_models.append((ft_model_root.stem, ft_model))
-    
+
     return comparing_models
 
 def generate(model: AutoModelForCausalLM, tokenizer:AutoTokenizer, prompt: str):
@@ -102,25 +102,29 @@ def generate_answer(model: AutoModelForCausalLM, question: str, tokenizer: AutoT
     return extract_answer(decoded)
 
 
-def compute_bertscore(df, model_name: str, scorer_model="distilbert-base-uncased"):
-    cands = df["prediction"].tolist()
-    refs = df["reference"].tolist()
+def compute_nll(model: AutoModelForCausalLM, question: str, answer: str, tokenizer: AutoTokenizer) -> float:
+    """Compute the negative log-likelihood of the reference answer given the question."""
+    prompt = f"Q: {question}\nA: {answer}"
+    inputs = tokenizer(prompt, return_tensors="pt").to(DEVICE)
+    input_ids = inputs["input_ids"]
 
-    p, r, f1 = bert_score(
-        cands,
-        refs,
-        lang="en",
-        model_type=scorer_model,
-        device=DEVICE,
-        verbose=False,
-    )
+    # Find where the answer tokens start
+    prompt_only = f"Q: {question}\nA:"
+    prompt_ids = tokenizer(prompt_only, return_tensors="pt")["input_ids"]
+    prompt_len = prompt_ids.shape[1]
 
-    return {
-        "model": model_name,
-        "bert_p": float(p.mean().item()),
-        "bert_r": float(r.mean().item()),
-        "bert_f1": float(f1.mean().item()),
-    }
+    with torch.no_grad():
+        outputs = model(**inputs, labels=input_ids)
+        # outputs.loss is the mean cross-entropy over ALL tokens; recompute over answer tokens only
+        logits = outputs.logits  # (1, seq_len, vocab_size)
+
+    # Shift logits and labels for next-token prediction
+    shift_logits = logits[:, prompt_len - 1 : -1, :].contiguous()
+    shift_labels = input_ids[:, prompt_len:].contiguous()
+
+    loss_fn = torch.nn.CrossEntropyLoss(reduction="mean")
+    nll = loss_fn(shift_logits.view(-1, shift_logits.size(-1)), shift_labels.view(-1))
+    return float(nll.item())
 
 
 def eval_QnA(QnA: List[str], models:List[Tuple[str, AutoModelForCausalLM]], tokenizer:AutoTokenizer, out_dir:Path):
@@ -143,6 +147,8 @@ def eval_QnA(QnA: List[str], models:List[Tuple[str, AutoModelForCausalLM]], toke
                 verbose=False,
             )
 
+            nll = compute_nll(model, qna["question"], ref, tokenizer)
+
             result_per_model.append(
                 {
                     "model": model_name,
@@ -153,6 +159,7 @@ def eval_QnA(QnA: List[str], models:List[Tuple[str, AutoModelForCausalLM]], toke
                     "bert_p": float(p.mean().item()),
                     "bert_r": float(r.mean().item()),
                     "bert_f1": float(f1.mean().item()),
+                    "nll": nll,
                 }
             )
 
@@ -160,30 +167,11 @@ def eval_QnA(QnA: List[str], models:List[Tuple[str, AutoModelForCausalLM]], toke
     all_results_df = pd.DataFrame(all_results)
     summary = (
         all_results_df.groupby("model", as_index=False)
-        .agg(bert_p=("bert_p", "mean"), bert_r=("bert_r", "mean"), bert_f1=("bert_f1", "mean"))
+        .agg(bert_p=("bert_p", "mean"), bert_r=("bert_r", "mean"), bert_f1=("bert_f1", "mean"), nll=("nll", "mean"))
         .sort_values("bert_p")
     )
 
-    max_bert_p = summary["bert_p"].max()
-    max_bert_r = summary["bert_r"].max()
-    max_bert_f1 = summary["bert_f1"].max()
-
-    def _fmt(value: float, max_value: float) -> str:
-        text = f"{value:.4f}"
-        return f"**{text}**" if abs(value - max_value) < 1e-12 else text
-
-    result += "## Q&A BERTScore Summary\n\n"
-    result += "| model | bert_p | bert_r | bert_f1 |\n"
-    result += "|---|---:|---:|---:|\n"
-    for _, row in summary.iterrows():
-        result += (
-            f"| {row['model']} | "
-            f"{_fmt(float(row['bert_p']), float(max_bert_p))} | "
-            f"{_fmt(float(row['bert_r']), float(max_bert_r))} | "
-            f"{_fmt(float(row['bert_f1']), float(max_bert_f1))} |\n"
-        )
-    result += "\n"
-
+    result = gen_md_table(result, summary)
     with open(out_dir / "report_inference.md", "a") as f:
         f.write(result)
 
@@ -208,9 +196,9 @@ def evaluation(out_dir: Path, tokenizer: AutoTokenizer):
 
 
 if __name__ == "__main__":   
-    out_dir = Path("/mnt/jinho/Development/Projects/2026/BMW_LLMs_finetuning/results/20260224_134636")
-    
+    out_dir = Path("/mnt/jinho/Development/Projects/2026/BMW_LLMs_finetuning/results/20260225_091140")
+
     tokenizer = AutoTokenizer.from_pretrained(CONFIG_LLMS.get("model", "gpt2"), use_fast=True)
     tokenizer.pad_token = tokenizer.eos_token
-    
+
     evaluation(out_dir, tokenizer)

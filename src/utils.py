@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 from shutil import copy2, copytree, ignore_patterns
 
+import pandas as pd
 import yaml
 
 
@@ -37,3 +38,36 @@ def save_file_dump(output_dir: Path):
             copy2(file, save_path / file)
         except:
             print(f"{file} does not exist.")
+
+
+def gen_md_table(result: str, summary: pd.DataFrame):
+    bert_p_MinMax = (float(summary["bert_p"].min()), float(summary["bert_p"].max()))
+    bert_r_MinMax = (float(summary["bert_r"].min()), float(summary["bert_r"].max()))
+    bert_f1_MinMax = (float(summary["bert_f1"].min()), float(summary["bert_f1"].max()))
+    nll_MinMax = (float(summary["nll"].min()), float(summary["nll"].max()))
+
+    def _fmt(value: float, minmax: tuple, larger_is_better=True, epsilon=1e-12) -> str:
+        min_val, max_val = minmax
+        if larger_is_better:
+            is_best = abs(value - max_val) < epsilon
+        else:
+            is_best = abs(value - min_val) < epsilon
+
+        text = f"{value:.4f}"
+        return f"**{text}**" if is_best else text
+
+    result += "## Q&A BERTScore Summary\n\n"
+    result += "| model | bert_p | bert_r | bert_f1 | nll |\n"
+    result += "|---|---:|---:|---:|---:|\n"
+    for _, row in summary.iterrows():
+        result += (
+            f"| {row['model']} | "
+            f"{_fmt(float(row['bert_p']), bert_p_MinMax)} | "
+            f"{_fmt(float(row['bert_r']), bert_r_MinMax)} | "
+            f"{_fmt(float(row['bert_f1']), bert_f1_MinMax)} | "
+            f"{_fmt(float(row['nll']), nll_MinMax, False)} |\n"
+        )
+    result += "\n"
+
+    return result
+    return result
