@@ -4,25 +4,52 @@
 
 ### Model: base
 
-"Q: What is BMW Welt?\nA:"Welt" is the abbreviation for the German word "Werke" which means "Bicycle".
+"Q: What is BMW Welt?\nA:"
 
-It was a common misconception that bicycle riding in Germany was only legal until 1970, when the law was changed to allow bicycles on public roads. In fact, bicycle riding became legal in many parts of Germany until about 1950. This period was marked by rapid growth in bicycling as well as in other forms of transportation, especially in cities. Bicycles became more popular among young people and also among students, with many studying abroad in Europe at the time.
+* "Q: What is the difference between a C1 and C2?\nA:"
 
-The first known bicycle race took place in the city of Leipzig in 1523. The race was organized by the King of Saxony (1655-1715) and the Duke of Brunswick (1653-1702). The event was named after the city of Leipzig, where it was held. During this era, bicycles were often called "weltzug" or "daktisch" in reference to their size.
+* "Q: Where can I find out about BMW's newest model, the M3?\nA:"
 
-This was an era of rapid urbanization. Cities such as Berlin, Munich, Hannover and Berlin had more than half a million inhabitants before 1700. In 1725, Berlin's population reached 1.5 million. By 1804, the city was built on the former site of the city of Wittenberg. The city's main thoroughfare, the Friedrichstraße (literally: "the road to the sea"), was designed to resemble a
+* "Q: Which was the first car that BMW produced in Germany?\nA:"
+
+* "Q: How many different models are there in the BMW lineup?\nA:"
+
+* "Q: Which of the BMW models have the best handling?\nA:"
+
+* "Q: Which BMW models have the best acceleration?\nA:"
+
+* "Q: Which BMW model has the best braking?\nA:"
+
+* "Q: Which BMW model is best suited to being driven on the streets or on a track?\nA:"
+
+* "Q: What is the difference between the M5 and the S550?\nA:"
+
+* "Q: What is the difference between the BMW i8 and the i8 X?\nA:"
+
+* "Q: Is there a difference between the BMW 6 Series, the 7 Series and the 8 Series?\nA:"
+
+* "Q: Why are there so many BMW models?\nA:"
+
+* "Q: Which of the BMW models are good for people who want to be efficient?\nA:"
+
+* "Q: What is the
 
 ### Model: FT_full
 
-"Q: What is BMW Welt?\nA:"A social gathering for people who love the BMW brand" at the Bavarian capital.
-<TEASER>: The new Bavarian capital is an ideal location for events with a clear social side. At BMW Welt, there are already several social projects in progress, such as a project to give children the chance to learn to read and play together, as well as a digital initiative for teenagers to use games like chess or checkers.
-<TEXT>: Munich/Budapest. The new Bavarian capital is an ideal location for  events with a clear social side. At BMW Welt, there are already several  social projects in progress, such as a project to give children the  chance to learn to read and play together, as well as a digital initiative for  teenagers to use games like chess or checkers. In addition, there are many more  activities for residents, tourists, students, and young professionals. BMW Welt is located next door to the BMW Group Plant Munich, where more than 400,000 employees work. From March 21 to May 24, around 300 of them will be on site. “We want to make every day an exciting one at BMW Welt and at our two sites near Munich, so we're always looking for innovative ways to promote engagement and collaboration between different communities and individuals. That's what makes this so attractive,” said Jörg Lellmann, Head of BMW Welt. "As part of our commitment to social
+"Q: What is BMW Welt?\nA:"A weekly showcase of German culture and music, featuring guest DJs, innovative art installations and contemporary music. With its diverse programme, the programme showcases the best of German music and culture with a unique mix of genres and artists from across Germany.
+Q: When did BMW Welt start?
+A: BMW Welt started as a one-off event in late 2013, but has now become a regular part of Berlin's cultural landscape. The first BMW Welt took place in October 2013 at the former Spandau Theatre.
+Q: How many people attended each year?
+A: In 2015, BMW Welt was held in the former Spandau Theatre, which also hosted last year's finale of BMW Welt, which attracted over 800 visitors.
+Q: Who was the artist that performed this year?
+A: After a successful debut at BMW Welt in 2015, the festival continues to be an annual favourite for the best contemporary German artists. In 2018, a number of young talents will once again perform, including Kolek, Elia, Nils G, and Joachim G.
+Q: Who is the curator responsible for the festival's content?
+A: The creative team behind BMW Welt is made up of Markus Müller, Alexander Reiss, Florian Wüstmann, Christoph Pfeifer, and Felix Hängger, who have all previously worked on other international cultural events. All artists are chosen by the curator from an
 
 ### Model: FT-M1B
 
-"Q: What is BMW Welt?\nA:"The new BMW Group Welt is a unique destination for events, art and culture.
-<br><br>This unique destination will be open to the public from January 2nd to 5th 2024. BMW Welt, a boutique hotel in Munich, is set to transform into a place of freedom, openness, and contemporary art and culture. The BMW Group Welt will host more than 100 events over its four-year design cycle and become a focal point of global culture in Bavaria and around the globe.
-<br><br> The BMW Group Welt is a boutique hotel in Munich, a place where all are welcome. It is a place where the people of this region can come together, meet their fellow travelers, see their favorite artists, listen to their music, and discover a whole new world – whether it's through the doors of BMW Welt or through the eyes of the thousands who travel to the venue each year. BMW Welt’s opening weekend will bring an exciting array of events that celebrate Bavarian culture, art and design. In the year 2030, BMW Welt will host a special performance by the world premiere of the first digital concept car. Guests will also have the chance to explore Bavaria as they imagine their own creations using the BMW Art Car Studio, an online platform that gives fans a platform to create and share their vision with BMW Welt. “We are excited about hosting BMW Welt, which has such a rich cultural heritage and was
+"Q: What is BMW Welt?\nA:" It's the home of Munich's hottest night club. The name of this exclusive destination was coined by the Bavarian capital's most successful night clubbers, who had to work out a way to name their new hangout after one of Germany's most celebrated night clubs.
+Q: Who's going to Munich on the weekend? Where is BMW Welt? A: This year, the number of visitors in Munich has jumped by over 50 percent. As an extra incentive, there will be three-for-one special offers at BMW Welt during its closing day. Q: When and where does BMW Welt close? A: BMW Welt closes on Sunday, April 26th, at 11 p.m. All ticketed guests are invited to return on Monday, May 1st, from 9 a.m. to 6 p.m., for a final dance party and the opening reception of the new BMW i5 M Hybrid. All other BMW Welt events take place between Saturday, May 5th and Sunday, May 7th, from 2 p.m. to 10 p.m. You can book tickets for all these events here. Q: Why is BMW Welt so popular? A: BMW Welt is one of the city's most exciting night spots. This year, it promises to continue that momentum, thanks to the arrival of three world-class German DJs: DJ PODMAN, DJ JAMMINGER, and DJ MOKU. DJ P
 
 ## Prompt: 2: "Write a BMW press-release style paragraph about BMW Welt in 2026."
 
@@ -30,47 +57,30 @@ This was an era of rapid urbanization. Cities such as Berlin, Munich, Hannover a
 
 "Write a BMW press-release style paragraph about BMW Welt in 2026."
 
-"I have a question for you, which is more important than what I'm writing about today. What is the most important thing I've learned at BMW since I joined the company?"
+At that point I started to panic. The BMWs were getting faster, the mileage was going up, and I was being told that I should get a new car. I said I wanted my own car. I said I didn't want to be stuck with a brand new BMW, I just wanted a good old BMW for as long as possible. But that was before the new car sales people told me that I should do something. I had to give them the answer to this question:
 
-"Why can't we build cars faster than Tesla?"
+When will you buy a BMW?
 
-"How do you get people to buy electric cars? Why don't we put them on billboards around town?"
+They told me that they would take care of it once I got a check from the bank. "You'll have a car by then," they assured me. This was when I learned that my friends, who were also paying $250K+ for the cars, were not getting their money's worth. They were getting "a BMW, but in 2026." That is, if they kept their car until then.
 
-"What should I call my wife?"
-
-"If you could have one piece of advice for someone who wants to work at an automaker, what would it be?"
-
-"What does the word 'electric' mean to you?"
-
-"You mentioned that the Model 3 will cost $35,000. How much is it going to cost to build and sell this car?"
-
-"How many times did you go on Facebook yesterday?"
-
-"If you were CEO of BMW, what would your brand look like?"
-
-"What are the best ways to deal with employees who are constantly complaining about their jobs?"
-
-"What is your favorite book?"
-
-"How long until you can actually buy a new car from me? I'll give you the price if you agree to stay out of Tesla forever!"
-
-"If you had to pick three brands, which ones would you pick?"
-
-"If you could fly anywhere in the world, where would it be?"
-
-"How do you know you're not being taken advantage of by a competitor?"
+After another year or two of waiting, I finally made my first payment on my BMW. It took me a while, but I did it. I bought a BMW E92 M3. When I got it, I discovered that the engine was actually good enough for the weight of my wife and our daughter, so it was perfect. We drove it around for two months, and then we got it fixed up. It ran flawlessly for a few more years, until one day, after the car was back at
 
 ### Model: FT_full
 
 "Write a BMW press-release style paragraph about BMW Welt in 2026."
-<TEASER>: The BMW Group is proud to announce that the first permanent exhibition space for artists, curators and designers at Munich’s BMW Welt will open this year.
-<TEXT>: Munich. The BMW Group is proud to announce that the first permanent exhibition space for artists, curators and designers at Munich’s BMW Welt will open this year. With more than thirty galleries, the museum boasts an impressive collection of over 2,500 works from artists and design studios from around the world, as well as a series of permanent exhibitions and installations by renowned international curators. For the past fifteen years, BMW Welt has been the place where artists, designers and curators come together. This year, the new permanent exhibition space features three contemporary art spaces, representing the diverse approaches taken by the BMW Group on the topic of contemporary architecture. “BMW Welt is a cultural jewel. It offers us the opportunity to showcase our brands across multiple platforms – print, digital and on film – and to showcase our talents and expertise in architecture and design,” says Martin Jaeger, Vice President Design at the BMW Group. “Our collaboration with BMW Welt has been particularly fruitful, and we look forward to continuing this strong partnership in 2026.” BMW Welt opens as permanent exhibition space The first permanent exhibition space for artists, designers and curators at BMW Welt opened its doors in July 2024, with a permanent installation by the artist David
+"BMW Welt will be fully autonomous from the autumn of 2024."
+"BMW Welt will become an open, flexible and dynamic community for people to work together. The BMW Group will partner with local authorities to integrate the project into existing services and projects."
+"The BMW Welt project is not only a success story for local communities, but also for the German government."
+"At the end of 2024, BMW Welt will transform into an active and connected community of BMW users. This includes: “Automated vehicle parking;” “Volunteer car sharing with BMW Welt members;” “Community events such as art exhibitions and cultural festivals on BMW Welt premises;” “and more!” “BMW Welt has already achieved tremendous success in Germany: With over 100 volunteers, we have already contributed more than 10,000 hours to the project since its launch.”
+"Local communities benefit when they can participate directly in their own development. In 2026, local authorities will be able to use the BMW Welt infrastructure to integrate new initiatives into existing services and projects. By integrating local communities in the BMW Welt project, BMW Welt aims to promote social cohesion and foster collaboration among local residents," said Bernd Köpke, Member of the Board of Management of BMW AG responsible for Development. “As part of this, we are creating a framework in which local authorities can bring forward
 
 ### Model: FT-M1B
 
 "Write a BMW press-release style paragraph about BMW Welt in 2026."
-<TEASER>: A place for people to meet, discuss and connect. A place where the voices of all people can be heard clearly: BMW Welt is an opportunity not only to hear what's happening, but also to actively participate in the process – and share our perspectives.
-<TEXT>: Munich/Berlin. For the first time ever, the BMW Welt in the heart of Berlin will host a cultural programme at the end of June – the same day as the opening of the BMW Museum Berlin. In the program, people from around the world can find themselves in the company of more than a hundred members of the BMW Welt community on the second Sunday of each month (from 12:00 p.m. until 01:00 a.m. on Tuesday). These individuals are invited to speak their views and views, to engage with the programme, to make new connections, and to support BMW Welt in its mission to build a bridge between the present and the future. For this purpose, we invite you to join us for the BMW Welt Open Open House on 27 June. It will be a festive affair with the usual high-energy activities, including games and art openings, as well as a chance for people to meet and talk with BMW Welt staff and guests. The BMW Welt Open House opens at 11:30 a.m. on 27 June. The BMW Welt Open House is open to the public until 01:00 a.m.
+7. "For the first time ever, more people are choosing the BMW brand as their car of choice for a private driving holiday than for an all-electric car."
+8. "A new survey reveals that the BMW brand is most popular among young people in Europe. In Germany, the company has been the top choice since 2009. This year, in the first week of November, more than one million customers selected a BMW model as their vehicle of choice. The number of BMW owners in Germany rose by nearly 13 percent to 621,000 – and the BMW brand continues to dominate the private driving market."
+9. "The results from our private driving study confirm that BMW has achieved a long-term success story. Our model portfolio continues to be a very successful proposition for young people: in a bid to maintain the BMW brand's leadership position in the private driving segment, we will continue to invest in the design and development of the brand's premium models and vehicles."
+10. "In addition to a growing number of high-value customers, BMW has also been successful in attracting the younger generation. A clear majority of young people choose the BMW brand as their personal vehicle of choice – up 14% over last year. The share of consumers under 30 choosing a BMW brand as their personal vehicle of choice increased by 7%. As the BMW brand has become even more attractive to young people, this indicates a potential growth rate of almost 18% in the coming years. For the first time
 
 ## Prompt: 3: "Summarize the key highlights of BMW Welt in 2026 in 3 bullet points."
 
@@ -78,33 +88,35 @@ This was an era of rapid urbanization. Cities such as Berlin, Munich, Hannover a
 
 "Summarize the key highlights of BMW Welt in 2026 in 3 bullet points."
 
-1. BMW is going to spend around €25 billion on new plants and technology projects, including the 2.0 liter three-cylinder turbo diesel engine for the M6 and new high-performance cars, to be revealed at the Frankfurt Motor Show next month. The 2.0 liter six cylinder diesel engine will also make its debut in a BMW M5 by 2020, as well as a BMW 6 Series sedan, which will go on sale by 2025. It will be sold at the high end of the market, with prices expected to be around $125,000.
+BMW is now planning to invest €4 billion in a new plant in Mexico, where it plans to build its next generation M6 sports car.
 
-2. BMW expects to spend about €25 billion on new plants and technology projects, including the 2.0 liter three-cylinder turbo diesel engine for the M6 and new high-performance cars, to be unveiled at the Frankfurt Motor Show next month. The 2.0 liter six cylinder diesel engine will also make its debut in a BMW M5 by 2020, as well as a BMW 6 Series sedan, which will go on sale by 2025. It will be sold at the high end of the market, with prices expected to be around $125,000. 3. BMW has already committed to invest €16 billion into new technology and manufacturing facilities in 2017 alone, in addition to a further €3.7 billion in 2018. This includes the construction of a new headquarters for BMW in the North Sea and the expansion of its plant in the southern state of Bavaria.
+The company also announced that the M235i would be the car of choice for the first 100,000 vehicles produced at the new factory, which will have the capacity to produce 500,000 cars per year.The government has asked the Supreme Court to stay an order of the apex court which directed a three-judge Bench of the Delhi High Court to hear the matter of the withdrawal of Rs 2,500 crore worth bonds issued by a private lender by RBI and the recovery of the interest paid on such bonds from the Central Government.
 
-4. With
+The petition filed by advocate Ram Jethmalani seeks to stay the apex court's decision as well as the Reserve Bank of India's (RBI) order to withdraw the bonds. The petition was filed by Delhi-based lawyer Prashant Bhushan on behalf of all the parties concerned, including Congress MP Harsh Vardhan and former Chief Justice of India G S Singhvi.
+
+In its order dated December 22, 2016, the bench had directed the Centre and RBI to submit their views within four weeks on the issue raised by the petitioner. The court had ordered a detailed report by May 30, 2017, about how the central bank had approached RBI for the money. In its order, the bench had said: "The government will not appeal against the order
 
 ### Model: FT_full
 
 "Summarize the key highlights of BMW Welt in 2026 in 3 bullet points."
-<TEASER>: In 2026, Munich will host three BMW Welt events – the BMW Welt Art Fair and the BMW Welt Design Festival. The BMW Welt design festival will take place from 5 to 8 October 2024 at the Schloss Elmau, showcasing innovative concepts from contemporary artists, architects and designers. The BMW Welt Design Fair will take place on 27 to 30 October 2024 at the Schloss Elmau, showcasing innovative ideas from contemporary architects, creative and fashion designers, as well as emerging artists.
-<TEXT>: Munich. In 2026, Munich will host three BMW Welt events – the BMW Welt Art Fair and the BMW Welt Design Festival. The BMW Welt Design Fair will take place on 27 to 30 October 2024 at the Schloss Elmau, showcasing innovative concepts from contemporary artists, architects and designers, as well as emerging artists. At the BMW Welt Design Fair, which is currently taking place in partnership with Design Museum of Munich (DMMS), a wide range of exhibitions will be presented alongside the design competition, allowing visitors to explore the future of design. “BMW Welt has been a long-standing partner in Bavaria’s cultural landscape for over 40 years. This year’s collaboration with the Design Museum of Munich marks another milestone in our ongoing commitment to curating and presenting contemporary art and architecture through the lens of design. Our partnership with the Design Museum of Munich is an important step towards celebrating and celebrating
+4.1. Drivers' satisfaction as a result of the development of the BMW iX3 and BMW XM Touring, including the expansion of the customer base with new BMW models 5.2. The increase in the volume of customers choosing BMW Group vehicles 6.1. The growth of sales to customers under the age of 35 and the increasing demand for premium brand vehicles 7.2. The increase in revenue generated by the BMW Group at BMW Group Group Plant Neukölln 8.5. The strong demand for the BMW XM, the launch of the BMW Vision Gran Turismo and the introduction of the BMW X3 9.1. The successful rollout of the fully electric BMW iX3 at the end of the year 10.2. The sales impact of the BMW iX3 in the third quarter of the year
+5.2. The BMW Group in 2026: “The expansion of the customer base is reflected in the impressive increase in the volume of customers choosing BMW Group vehicles.” At BMW Group Plant Neukölln, sales increased by 3 percent over the same period last year. The number of vehicles delivered increased by 19 percent across all models. At BMW Group Plant Regensburg, the BMW X3 was the fastest-selling model in Europe in the first three months of this year, making it the company's most popular model in Germany. This success is partly due to the unique combination of high-tech design and driving pleasure
 
 ### Model: FT-M1B
 
 "Summarize the key highlights of BMW Welt in 2026 in 3 bullet points."
-
-"BMW Welt will be a platform for education and creativity for young people, as well as an opportunity to see what's possible with digitalisation. We have been preparing for this transformation for more than three years. For example, we worked on a new digital platform for Munich-Brandenburg since May 2024. The BMW Welt project was successfully launched last week. It consists of a series of digital hubs that were developed at the University of Munich and BMW Group. These hubs are connected by one shared network and offer a wide range of user experiences. Our vision is that the BMW Welt hub will become a focal point for the sharing and collaboration needed for our transformation into a digital society."
-
-The BMW Welt project was developed with the support of the Ministry of Education, Culture, Sports and Religion, BMW Group and the University of Munich. It is part of the BMW Welt project on Digitalization at the Bavarian State University (Munich). The BMW Welt project, with its three-pronged approach, aims to make Munich the hub of digitalisation and the catalyst for the digitalisation of Munich. BMW Welt’s main activity is the development and maintenance of a shared data centre. The centre is the perfect location for high-resolution digital images, enabling the creation of panoramic views from all angles. This allows us to connect and integrate multiple sources of data, allowing us to expand digital networks and processes across the BMW Welt complex
+"The BMW Welt is a destination event. There are more than 200,000 people visiting BMW Welt every year. It's one of the most popular destinations for BMW Welt tourists."
+"A unique combination of the latest technologies and contemporary culture. We offer a unique experience in our car showroom that brings together technology with art, architecture, design and leisure – all at once."
+"BMW Welt presents an exciting vision of the future. The BMW Welt will continue to be a cultural attraction for the community of BMW Welt from 2026."
+"For more information please contact: BMW Welt PR GmbH, Media Relations Head Kristina Schwanmeier, BMW Welt COO, Markus Lohr, Communications Manager, Joachim Wegner, BMW Welt Sales Director, Peter Bohnert, Marketing & Customer Development Team.  "2026 marks BMW Welt's 20th anniversary and we are looking forward to celebrating with you this special year!" See also: 2026 marks BMW Welt's 20th anniversary and we are looking forward to celebrating with you this special year! “2026 marks BMW Welt's 20th anniversary and we are looking forward to celebrating with you this special year! “This year, we were able to bring together some of the most talented people in Munich as well as the BMW Welt community for a series of innovative workshops, panels and events. A special highlight was the introduction
 
 # BMW-related Q&A
 
 ## Q&A BERTScore Summary
 
-| model | bert_p | bert_r | bert_f1 |
-|---|---:|---:|---:|
-| FT_full | 0.6853 | 0.7551 | 0.7174 |
-| FT-M1B | 0.6893 | 0.7633 | 0.7232 |
-| base | **0.7042** | **0.7647** | **0.7325** |
+| model | nll | bert_p | bert_r | bert_f1 |
+|---|---:|---:|---:|---:|
+| base | 3.8015 | 0.7042 | 0.7647 | 0.7325 |
+| FT_full | **2.9150** | **0.7163** | 0.7615 | **0.7379** |
+| FT-M1B | 3.0098 | 0.6988 | **0.7649** | 0.7295 |
 
