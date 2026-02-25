@@ -19,20 +19,27 @@ CONFIG_DATA = retrieve_config(CONFIG_PATH, "data")
 CONFIG_LLMS = retrieve_config(CONFIG_PATH, "llms")
 CONFIG_TRAIN = retrieve_config(CONFIG_PATH, "train")
 
-
-set_seed(retrieve_config(CONFIG_PATH, "seed"))  # Set random seed for reproducibility
+SEED = retrieve_config(CONFIG_PATH, "seed")
+set_seed(SEED)  # Set random seed for reproducibility
 
 FT_MODEL_NAMES = {
     "none":"FT_full",
     "last":"FT-M1B",
 }
 
-def prep_result_dir(run_name=None):
-    # overwrite run_name if it is provided as an argument, otherwise retrieve from config.yaml
-    run_name = retrieve_config(CONFIG_PATH, "name") if run_name is None else run_name
 
-    result_dir_stem = datetime.now().strftime("%Y%m%d_%H%M%S")
-    result_dir_stem += run_name if run_name else ""
+def prep_result_dir():
+    run_name = retrieve_config(CONFIG_PATH, "name")
+    if run_name is not None:
+        LOGGER.info(f"Run name for this training/evaluation: {run_name}", level=1)
+        result_dir_stem = run_name
+    else:
+        result_dir_stem = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+        note = retrieve_config(CONFIG_PATH, "note")
+        if note is not None:
+            LOGGER.info(f"Note for this training/evaluation: {note}", level=1)
+            result_dir_stem += f"_{note}"
 
     out_dir = Path(f"{CONFIG_DATA.get('output_dir', 'results')}/{result_dir_stem}")
     if not out_dir.exists():  # Create out_dir folder
@@ -88,11 +95,11 @@ def define_dataset():
     data_path = f"{CONFIG_DATA.get('db_root', 'database')}/{CONFIG_DATA.get('prepare',{}).get('processed_data_fname', 'articles_proc.jsonl')}"
 
     ds = load_dataset("json", data_files=data_path)
-    
-    #TODO: for better flexibility, define test_size in config.yaml.
-    ds = ds["train"].train_test_split(test_size=0.1)
+
+    # TODO: for better flexibility, define test_size in config.yaml.
+    ds = ds["train"].train_test_split(test_size=0.1, seed=SEED)  # split the dataset into train and test sets
     train_ds, eval_ds = ds["train"], ds["test"]
-    
+
     return train_ds, eval_ds
 
 
