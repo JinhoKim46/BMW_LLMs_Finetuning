@@ -10,7 +10,7 @@ from transformers import (AutoModelForCausalLM, AutoTokenizer,
                           TrainingArguments, set_seed)
 
 from logger import get_logger
-from utils import retrieve_config
+from utils import retrieve_config, save_file_dump
 
 LOGGER = get_logger("llms - fine-tuning")
 
@@ -134,6 +134,7 @@ def get_trainer(model, train_ds, eval_ds, data_collator, out_dir:Path):
 def fine_tuning():
     # TODO: if checkpoint is available in the out_dir, load the checkpoint and resume training. This is needed when the training needs to be stopped and restarted, as the training may take a long time.
     out_dir = prep_result_dir()
+    save_file_dump(out_dir)
 
     train_ds, eval_ds = define_dataset()
 
