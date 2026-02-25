@@ -95,31 +95,40 @@ Training loss is monitored via TensorBoard.
 
 ### GPT-2 vs. GPT-2 Large
 
-GPT-2 Large significantly outperforms GPT-2, confirming that model size matters. From top to bottom: GPT-2+FT_M1B (sky blue), GPT-2+FT_full (red), GPT-2 Large+FT_M1B (dark blue), GPT-2 Large+FT_full (orange).
+Figure 1 shows that GPT-2 Large significantly outperforms GPT-2, confirming that model size matters. From top to bottom: GPT-2+FT_M1B (sky blue), GPT-2+FT_full (red), GPT-2 Large+FT_M1B (dark blue), GPT-2 Large+FT_full (orange).
 
 ![Loss curves](figures/loss_curves.png)
+*Figure 1. Training and validation loss curves for GPT-2 vs. GPT-2 Large (FT_full and FT_M1B variants shown).*
 
 ### Trainable Parameters (LoRA)
+LoRA hyper-parameters:
+- r = 16
+- alpha = 32
+- dropout = 0.05
+- target_modules = ["c_attn"]
 
-Both variants train ~0.19% of total parameters — the layer removal has negligible effect on parameter count.
+Both variants train ~0.38% of total parameters — the layer removal has negligible effect on parameter count.
 
-- **FT_full:** `1,474,560 / 775,504,640 (0.1901%)`
-- **FT_M1B:** `1,433,600 / 755,786,240 (0.1897%)`
+- **FT_full:** `2,949,120 / 755,786,240 (0.3796%)`
+- **FT_M1B:** `2,867,200 / 775,504,640 (0.3786%)`
 
 ### FT_full vs. FT_M1B — Loss
 
-FT_full achieves lower train/validation loss than FT_M1B.
+FT_full (Magenta) achieves lower train/validation loss than FT_M1B (Green).
 
-![Train loss](figures/FT_full_VS_M1B_train_loss.png) ![Eval loss](figures/FT_full_VS_M1B_eval_loss.png)
+![Train loss-optim](figures/FT_full_VS_M1B_train_loss_optim.png) ![Eval loss-opim](figures/FT_full_VS_M1B_eval_loss_optim.png)
+*Figure 2. Training and validation loss curves for FT_full vs. FT_M1B.*
 
-However, the base model scores highest on BERTScore:
+Except for BERTScore recall, FT_full outperforms FT_M1B across all metrics, suggesting that the last transformer layer contributes to overall performance.
 
-*Table 1. BERTScore on QnA evaluation*
-| Model | bert_p | bert_r | bert_f1 |
-|---|---:|---:|---:|
-| FT_full | 0.6853 | 0.7551 | 0.7174 |
-| FT_M1B | 0.6893 | 0.7633 | 0.7232 |
-| base | **0.7042** | **0.7647** | **0.7325** |
+
+*Table 1. BERTScore on QnA evaluation of training shown in Figure 2*
+| model | nll | bert_p | bert_r | bert_f1 |
+|---|---:|---:|---:|---:|
+| base | 3.8015 | 0.7042 | 0.7647 | 0.7325 |
+| FT_full | **2.9150** | **0.7163** | 0.7615 | **0.7379** |
+| FT-M1B | 3.0098 | 0.6988 | **0.7649** | 0.7295 |
+
 
 The full evaluation report is provided in `published-results/sample_result/report_inference.md`.
 
@@ -143,13 +152,11 @@ Overfitting appears beyond ~15 epochs on this small dataset; training is capped 
 
 ![Train loss](figures/Overfitting_train_loss.png) ![Eval loss](figures/Overfitting_eval_loss.png)
 
+*Figure 3. Overfitting behavior in training and validation loss.*
+
 ------------------------------------------------------------------------
 
 # 8. Discussion and Outlook
-
-**Why does the base model outscore fine-tuned models on BERTScore?**
-- Fine-tuning begins overfitting around the 800k step, likely degrading QnA accuracy.
-- Both fine-tuned models produce qualitatively better BMW-specific text, suggesting BERTScore may not fully capture domain-specific improvements.
 
 **Why is training speed similar despite FT_full having more parameters?**
 LoRA reduces trainable parameters to ~1.4M for both variants; the difference between them is negligible.
