@@ -128,9 +128,8 @@ FT_full (Magenta) achieves lower train/validation loss than FT_M1B (Green).
 
 Except for BERTScore recall, FT_full outperforms FT_M1B across all metrics, suggesting that the last transformer layer contributes to overall performance.
 
-
-*Table 1. BERTScore on QnA evaluation of training shown in Figure 2*
-| model | nll | bert_p | bert_r | bert_f1 |
+*Table 1. BERTScore on QnA evaluation. Negative log-likelihood (NLL) and BERTScore metrics (precision, p; recall, r; F1 score, f1) are given.*
+| model | NLL | BERT_p | BERT_r | BERT_f1 |
 |---|---:|---:|---:|---:|
 | base | 3.8015 | 0.7042 | 0.7647 | 0.7325 |
 | FT_full | **2.9150** | **0.7163** | 0.7615 | **0.7379** |
@@ -177,7 +176,17 @@ LoRA reduces trainable parameters to ~1.4M for both variants; the difference bet
 
 ------------------------------------------------------------------------
 
-# 9. Quick Start
+# 9. Conclusion
+
+This project implements a complete, reproducible end-to-end pipeline for domain-adaptive LLM fine-tuning, covering data collection, preprocessing, parameter-efficient adaptation, architectural experimentation, and structured evaluation.
+
+The workflow is modular and config-driven, enabling controlled experimentation and clear comparison between model variants. Results highlight practical tradeoffs between model capacity, efficiency, and dataset scale, with data volume emerging as the primary performance constraint.
+
+The design prioritizes reproducibility, extensibility, and scalability, aligning with production-oriented AI system development.
+
+------------------------------------------------------------------------
+
+# 10. Quick Start
 [NOTE] This project was built on a Linux environment with an NVIDIA RTX 4070 Ti GPU. Adjustments may be needed for other setups.
 ```bash
 # 1. Create and activate environment
@@ -195,3 +204,5 @@ python main.py
 
 # 5. Results are saved to results/
 ```
+
+------------------------------------------------------------------------
