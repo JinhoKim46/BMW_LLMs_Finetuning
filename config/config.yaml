@@ -8,7 +8,7 @@ workflow: # [crawl, prepare, ft, eval]
   - eval
 data:
   db_root: /mnt/jinho/Development/Projects/2026/BMW_LLMs_finetuning/database
-  output_dir: /mnt/jinho/Development/Projects/2026/BMW_LLMs_finetuning/results
+  output_dir: /mnt/jinho/Development/Projects/2026/BMW_LLMs_finetuning/results # DIR to store the output
   regenerate: False # whether to re-run the crawling and preparation steps if the output files already exist
   crawler:
     scroll_n: 100
