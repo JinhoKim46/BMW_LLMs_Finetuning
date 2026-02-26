@@ -1,20 +1,20 @@
-name: null # Training log name for resuming training or evaluating a specific checkpoint. If null, the current timestamp will be used as the log name.
+name: "20260226_095456" # Training log name for resuming training or evaluating a specific checkpoint. If null, the current timestamp will be used as the log name.
 note: null # Training note that is attahced after the timestamp. If null, only the timestamp will be used.
 seed: 42
 workflow: # [crawl, prepare, ft, eval]
   # - crawl
   # - prepare
-  - ft
+  # - ft
   - eval
 data:
-  db_root: /mnt/jinho/Development/Projects/2026/BMW_LLMs_finetuning/database
-  output_dir: /mnt/jinho/Development/Projects/2026/BMW_LLMs_finetuning/results # DIR to store the output
+  db_root: ./database
+  output_dir: ./results # DIR to store the output
   regenerate: False # whether to re-run the crawling and preparation steps if the output files already exist
   crawler:
-    scroll_n: 100
-    max_article_N: 1000
+    scroll_n: 10
+    max_article_N: 200
     sleep_time: 0.7
-    wait: 2
+    wait: 1
     raw_data_fname: articles_raw.jsonl
   prepare:
     processed_data_fname: articles_proc.jsonl
@@ -47,10 +47,17 @@ train:
   save_total_limit: 2
   logging_steps: 20
   report_to: tensorboard
-generation:
-    max_new_tokens: 300
+eval:
+  prompt_dir: ./prompts
+  generation:
+    max_new_tokens: 500
     do_sample: True
     temperature: 0.8
     top_p: 0.9
+    repetition_penalty: 1.1
+    eos_token_id: null # set to tokenizer.eos_token_id if not None
+  qna:
+    max_new_tokens: 100
+    do_sample: True    
     repetition_penalty: 1.1
     eos_token_id: null # set to tokenizer.eos_token_id if not None

@@ -14,9 +14,8 @@ from utils import gen_md_table, retrieve_config
 LOGGER = get_logger("llms - evaluation")
 
 CONFIG_PATH = Path(__file__).parent.parent / "config/config.yaml"
-CONFIG_GEN = retrieve_config(CONFIG_PATH, "generation")
+CONFIG_EVAL = retrieve_config(CONFIG_PATH, "eval")
 CONFIG_LLMS = retrieve_config(CONFIG_PATH, "llms")
-CONFIG_DATA = retrieve_config(CONFIG_PATH, "data")
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -46,7 +45,7 @@ def get_comparing_models(tokenizer:AutoTokenizer, out_dir:Path, base_model_name:
 def generate(model: AutoModelForCausalLM, tokenizer:AutoTokenizer, prompt: str):
     inputs = tokenizer(prompt, return_tensors="pt").to(DEVICE)
     with torch.no_grad():
-        out = model.generate(**inputs, **CONFIG_GEN)
+        out = model.generate(**inputs, **CONFIG_EVAL.get("generation", {}))
     return tokenizer.decode(out[0], skip_special_tokens=True)
 
 def eval_text_gen(prompts: List[str], models:List[Tuple[str, AutoModelForCausalLM]], tokenizer:AutoTokenizer, out_dir:Path):
@@ -60,7 +59,7 @@ def eval_text_gen(prompts: List[str], models:List[Tuple[str, AutoModelForCausalL
             result += f"### Model: {model_name}\n\n"
             result += f"{gen_text}\n\n"
 
-    with open(out_dir / "report_inference.md", "a") as f:
+    with open(out_dir / "report_inference.md", "a", encoding="utf-8") as f:
         f.write(result)
 
 
@@ -87,13 +86,9 @@ def generate_answer(model: AutoModelForCausalLM, question: str, tokenizer: AutoT
     prompt = f"Q: {question}\nA:"
     inputs = tokenizer(prompt, return_tensors="pt").to(DEVICE)
 
-    eval_gen_cfg = dict(CONFIG_GEN)
-    eval_gen_cfg["do_sample"] = False
-    eval_gen_cfg["max_new_tokens"] = min(eval_gen_cfg.get("max_new_tokens", 64), 32)
+    eval_gen_cfg = dict(CONFIG_EVAL.get("qna", {}))  # Use separate generation config for QnA if available
     eval_gen_cfg["pad_token_id"] = tokenizer.eos_token_id
     eval_gen_cfg["eos_token_id"] = tokenizer.eos_token_id
-    eval_gen_cfg.pop("temperature", None)
-    eval_gen_cfg.pop("top_p", None)
 
     with torch.no_grad():
         output_ids = model.generate(**inputs, **eval_gen_cfg)
@@ -180,7 +175,7 @@ def eval_QnA(QnA: List[str], models:List[Tuple[str, AutoModelForCausalLM]], toke
         .reset_index()
     )
     result = gen_md_table(result, summary)
-    with open(out_dir / "report_inference.md", "a") as f:
+    with open(out_dir / "report_inference.md", "a", encoding="utf-8") as f:
         f.write(result)
 
 
@@ -190,15 +185,15 @@ def evaluation(out_dir: Path, tokenizer: AutoTokenizer, log_lv=1):
     base_model_name = CONFIG_LLMS.get("model", "gpt2")
     comparing_models = get_comparing_models(tokenizer, out_dir, base_model_name)
 
-    db_root = CONFIG_DATA.get("db_root", "database")
-    with open(f"{db_root}/prompt.txt", "r") as f:
+    prompt_root = CONFIG_EVAL.get("prompt_dir", "./prompts")
+    with open(f"{prompt_root}/prompt.txt", "r", encoding="utf-8") as f:
         prompts = [i.strip() for i in f.readlines()]    
     LOGGER.info(f"Loaded {len(prompts)} prompts for evaluation.", level=log_lv)
     eval_text_gen(prompts, comparing_models, tokenizer, out_dir)
 
-    qna_path = Path(db_root) / "qna.jsonl"
+    qna_path = Path(prompt_root) / "qna.jsonl"
     if not qna_path.exists():
-        qna_path = Path(db_root) / "QnA.jsonl"
+        qna_path = Path(prompt_root) / "QnA.jsonl"
 
     qna = load_qna(qna_path)
     LOGGER.info(f"Loaded {len(qna)} Q&A pairs for evaluation.", level=log_lv)

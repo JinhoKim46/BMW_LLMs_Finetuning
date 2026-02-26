@@ -13,10 +13,6 @@ LOGGER = get_logger("E2E workflow")
 LOG_LV = 0
 
 CONFIG_PATH = "config/config.yaml"
-CONFIG_DATA = retrieve_config(CONFIG_PATH, "data")
-CONFIG_LLMS = retrieve_config(CONFIG_PATH, "llms")
-CONFIG_TRAIN = retrieve_config(CONFIG_PATH, "train")
-CONFIG_GEN = retrieve_config(CONFIG_PATH, "generation")
 
 set_seed(retrieve_config(CONFIG_PATH, "seed"))  # Set random seed for reproducibility
 

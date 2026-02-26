@@ -24,16 +24,17 @@ The focus is on technical correctness, clarity, and reproducibility rather than 
 
 ```
 ├── config/config.yaml                  # Pipeline configuration (paths, hyperparameters, workflow steps)
-├── database/ (gitignored)              # Raw/processed data, prompts, QnA pairs
+├── database/ (gitignored)              # Raw/processed data
+├── prompts/                            # prompts and QnA pairs for evaluation
 ├── src/
 │   ├── bmw_01_article_crawler.py       # Web crawler
 │   ├── bmw_02_data_prepare.py          # Data preprocessing
-│   ├── bmw_03_llms_FT.py              # Fine-tuning
-│   ├── bmw_04_llms_eval.py            # Evaluation
+│   ├── bmw_03_llms_FT.py               # Fine-tuning
+│   ├── bmw_04_llms_eval.py             # Evaluation
 │   ├── logger.py                       # Structured logger
 │   └── utils.py                        # Shared utilities
 ├── logs/ (gitignored)                  # Timestamped execution logs
-├── results/ (gitignored)              # Checkpoints, eval results, generated samples
+├── results/ (gitignored)               # Checkpoints, eval results, generated samples
 ├── ipynb/                              # Notebooks for EDA, development, and visualization
 └── main.py                             # Entry point — runs workflow steps from config
 ```
