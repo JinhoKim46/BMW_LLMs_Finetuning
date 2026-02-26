@@ -1,4 +1,4 @@
-name: "20260226_095456" # Training log name for resuming training or evaluating a specific checkpoint. If null, the current timestamp will be used as the log name.
+name: null # Training log name for resuming training or evaluating a specific checkpoint. If null, the current timestamp will be used as the log name.
 note: null # Training note that is attahced after the timestamp. If null, only the timestamp will be used.
 seed: 42
 workflow: # [crawl, prepare, ft, eval]
