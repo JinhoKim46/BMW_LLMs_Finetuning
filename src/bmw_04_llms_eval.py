@@ -184,14 +184,16 @@ def eval_QnA(QnA: List[str], models:List[Tuple[str, AutoModelForCausalLM]], toke
         f.write(result)
 
 
-def evaluation(out_dir: Path, tokenizer: AutoTokenizer):
+def evaluation(out_dir: Path, tokenizer: AutoTokenizer, log_lv=1):
+    LOGGER.info("Starting evaluation of LLMs on BMW-related tasks...", level=log_lv)
+    
     base_model_name = CONFIG_LLMS.get("model", "gpt2")
     comparing_models = get_comparing_models(tokenizer, out_dir, base_model_name)
 
     db_root = CONFIG_DATA.get("db_root", "database")
     with open(f"{db_root}/prompt.txt", "r") as f:
         prompts = [i.strip() for i in f.readlines()]    
-    LOGGER.info(f"Loaded {len(prompts)} prompts for evaluation.")
+    LOGGER.info(f"Loaded {len(prompts)} prompts for evaluation.", level=log_lv)
     eval_text_gen(prompts, comparing_models, tokenizer, out_dir)
 
     qna_path = Path(db_root) / "qna.jsonl"
@@ -199,7 +201,7 @@ def evaluation(out_dir: Path, tokenizer: AutoTokenizer):
         qna_path = Path(db_root) / "QnA.jsonl"
 
     qna = load_qna(qna_path)
-    LOGGER.info(f"Loaded {len(qna)} Q&A pairs for evaluation.")
+    LOGGER.info(f"Loaded {len(qna)} Q&A pairs for evaluation.", level=log_lv)
     eval_QnA(qna, comparing_models, tokenizer, out_dir)
 
 

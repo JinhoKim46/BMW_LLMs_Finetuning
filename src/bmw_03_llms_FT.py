@@ -28,17 +28,17 @@ FT_MODEL_NAMES = {
 }
 
 
-def prep_result_dir():
+def prep_result_dir(log_lv=1):
     run_name = retrieve_config(CONFIG_PATH, "name")
     if run_name is not None:
-        LOGGER.info(f"Run name for this training/evaluation: {run_name}", level=1)
+        LOGGER.info(f"Run name for this training/evaluation: {run_name}", level=log_lv)
         result_dir_stem = run_name
     else:
         result_dir_stem = datetime.now().strftime("%Y%m%d_%H%M%S")
 
         note = retrieve_config(CONFIG_PATH, "note")
         if note is not None:
-            LOGGER.info(f"Note for this training/evaluation: {note}", level=1)
+            LOGGER.info(f"Note for this training/evaluation: {note}", level=log_lv)
             result_dir_stem += f"_{note}"
 
     out_dir = Path(f"{CONFIG_DATA.get('output_dir', 'results')}/{result_dir_stem}")
@@ -48,7 +48,7 @@ def prep_result_dir():
     return out_dir
 
 
-def get_models() -> Dict[str, AutoModelForCausalLM]:
+def get_models(log_lv=1) -> Dict[str, AutoModelForCausalLM]:
     MODEL_NAME = CONFIG_LLMS.get("model", "gpt2")
     
     discard_layer_list = CONFIG_LLMS.get("variations", ["none"])
@@ -61,7 +61,7 @@ def get_models() -> Dict[str, AutoModelForCausalLM]:
         )
             
         if discard_layer == "none":
-            LOGGER.info("Fine-tuning model with full depth was added!", level=1)
+            LOGGER.info("Fine-tuning model with full depth was added!", level=log_lv)
             models[FT_MODEL_NAMES[discard_layer]] = model
             continue
         else:
@@ -74,13 +74,13 @@ def get_models() -> Dict[str, AutoModelForCausalLM]:
             model.config.n_layer = len(model.transformer.h)
             
             # TODO: extention to other options
-            LOGGER.info("Fine-tuning model with Minus 1 block (M1B) depth was added!", level=1)
+            LOGGER.info("Fine-tuning model with Minus 1 block (M1B) depth was added!", level=log_lv)
             models[FT_MODEL_NAMES[discard_layer]] = model 
     
     return models
 
-def config_LoRA(model_name, model):
-    LOGGER.info(f"[{model_name}] Parameters for the LoRA method", level=1)
+def config_LoRA(model_name, model, log_lv=1):
+    LOGGER.info(f"[{model_name}] Parameters for the LoRA method", level=log_lv)
     print(json.dumps(CONFIG_LLMS.get("LoRA", {}), indent=4))
 
     # 2) Add LoRA (target GPT-2 attention projections)
@@ -91,7 +91,7 @@ def config_LoRA(model_name, model):
     return model
 
 
-def define_dataset():
+def define_dataset(log_lv=1):
     data_path = f"{CONFIG_DATA.get('db_root', 'database')}/{CONFIG_DATA.get('prepare',{}).get('processed_data_fname', 'articles_proc.jsonl')}"
 
     ds = load_dataset("json", data_files=data_path)
@@ -99,6 +99,8 @@ def define_dataset():
     # TODO: for better flexibility, define test_size in config.yaml.
     ds = ds["train"].train_test_split(test_size=0.1, seed=SEED)  # split the dataset into train and test sets
     train_ds, eval_ds = ds["train"], ds["test"]
+
+    LOGGER.info(f"Dataset loaded. Train size: {len(train_ds)}, Eval size: {len(eval_ds)}", level=log_lv)
 
     return train_ds, eval_ds
 
@@ -138,23 +140,25 @@ def get_trainer(model, train_ds, eval_ds, data_collator, out_dir:Path):
     return trainer
 
 
-def fine_tuning():
+def fine_tuning(log_lv=0):
     # TODO: if checkpoint is available in the out_dir, load the checkpoint and resume training. This is needed when the training needs to be stopped and restarted, as the training may take a long time.
-    out_dir = prep_result_dir()
+    LOGGER.info("Starting domain-adaptation of LLMs on the preprocessed article dataset...", level=log_lv)
+    
+    out_dir = prep_result_dir(log_lv=log_lv+1)
     save_file_dump(out_dir)
 
-    train_ds, eval_ds = define_dataset()
+    train_ds, eval_ds = define_dataset(log_lv=log_lv+1)
 
     train_ds, eval_ds, data_collator, tokenizer = define_tokenizer(train_ds, eval_ds)
 
-    models = get_models()
+    models = get_models(log_lv=log_lv+1)
 
     for model_name, model in models.items():
         out_dir_sub = out_dir / model_name
         if not out_dir_sub.exists():  # Create out_dir_sub folder
             out_dir_sub.mkdir(parents=True, exist_ok=True)
 
-        model = config_LoRA(model_name, model)
+        model = config_LoRA(model_name, model, log_lv=log_lv+2)
         trainer = get_trainer(model, train_ds, eval_ds, data_collator, out_dir_sub)
 
         trainer.train()

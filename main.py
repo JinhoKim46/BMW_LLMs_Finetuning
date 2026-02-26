@@ -10,7 +10,7 @@ from src.logger import get_logger
 from src.utils import prep_eval_wo_ft, retrieve_config
 
 LOGGER = get_logger("E2E workflow")
-
+LOG_LV = 0
 
 CONFIG_PATH = "config/config.yaml"
 CONFIG_DATA = retrieve_config(CONFIG_PATH, "data")
@@ -28,27 +28,27 @@ WORKFLOW_FNS = {
 }
 
 def run():
-    LOGGER.info("Starting end-to-end workflow for BMW-related LLM fine-tuning and evaluation!", level=0)
+    LOGGER.info("Starting end-to-end workflow for BMW-related LLM fine-tuning and evaluation!", level=LOG_LV)
 
     # TODO: add argparser for configurations so that users can easily modify the configs by passing arguments in command line.
 
     workflow = retrieve_config(CONFIG_PATH, "workflow")
-    LOGGER.info(f"Workflow steps to execute: {workflow}", level=1)
+    LOGGER.info(f"Workflow steps to execute: {workflow}", level=LOG_LV+1)
 
     to_eval = None
     for step in workflow:
         if step in WORKFLOW_FNS:
-            LOGGER.info(f"Running step: {step}", level=1)
+            LOGGER.info(f"Running step: {step}", level=LOG_LV+1)
             if step == "ft":
-                to_eval = WORKFLOW_FNS[step]()
+                to_eval = WORKFLOW_FNS[step](log_lv=LOG_LV+2)
             elif step == "eval":
                 if to_eval is None:
                     to_eval = prep_eval_wo_ft(CONFIG_PATH)
-                WORKFLOW_FNS[step](**to_eval)
+                WORKFLOW_FNS[step](log_lv=LOG_LV+2, **to_eval)
             else:
-                WORKFLOW_FNS[step]()
+                WORKFLOW_FNS[step](log_lv=LOG_LV+2)
         else:
-            LOGGER.warning(f"Unknown workflow step: {step}. Skipping.", level=1)
+            LOGGER.warning(f"Unknown workflow step: {step}. Skipping.", level=LOG_LV+1)
 
 
 if __name__ == "__main__":
