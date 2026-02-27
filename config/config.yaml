@@ -2,17 +2,17 @@ name: null # Training log name for resuming training or evaluating a specific ch
 note: null # Training note that is attahced after the timestamp. If null, only the timestamp will be used.
 seed: 42
 workflow: # [crawl, prepare, ft, eval]
-  # - crawl
-  # - prepare
-  # - ft
+  - crawl
+  - prepare
+  - ft
   - eval
 data:
   db_root: ./database
   output_dir: ./results # DIR to store the output
   regenerate: False # whether to re-run the crawling and preparation steps if the output files already exist
   crawler:
-    scroll_n: 10
-    max_article_N: 200
+    scroll_n: 1
+    max_article_N: 20
     sleep_time: 0.7
     wait: 1
     raw_data_fname: articles_raw.jsonl
@@ -40,7 +40,7 @@ train:
   per_device_eval_batch_size: 1
   gradient_accumulation_steps: 8
   learning_rate: 0.0005
-  num_train_epochs: 10
+  num_train_epochs: 2
   fp16: True
   eval_strategy: epoch
   save_strategy: epoch
