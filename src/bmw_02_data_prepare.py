@@ -39,7 +39,7 @@ def clean_teaser(teaser):
         
     return teaser.strip() if teaser else teaser
 
-def preprocess_article():
+def preprocess_article(log_lv=0):
     '''
     Preprocess raw article data and save it in the format below for fine-tuning.
     ```json
@@ -54,6 +54,8 @@ def preprocess_article():
         }
         ```
     '''
+    LOGGER.info("Starting preprocessing of raw articles...", level=log_lv)
+    
     fpath_raw = f"{CONFIG.get('db_root','database')}/{CONFIG.get('crawler', {}).get('raw_data_fname','articles_raw.jsonl')}"
     fpath_prep = f"{CONFIG.get('db_root','database')}/{CONFIG_PREP.get('processed_data_fname','articles_raw.jsonl')}"
     
@@ -74,7 +76,7 @@ def preprocess_article():
             
             if not data_idx or not article_id or not title or not text:
                 # TODO: More elaborate handling for missing fields. When text contain a single element in the list, it is easily filtered out during cleaning. 
-                LOGGER.warning(f"Omitting article with missing fields. idx: {data_idx}, article_id: {article_id}")
+                LOGGER.warning(f"Omitting article with missing fields. idx: {data_idx}, article_id: {article_id}", level=log_lv+1)
                 omit_count += 1
                 continue
             
@@ -86,7 +88,7 @@ def preprocess_article():
             f.write("\n")  # newline for readability
             
     elapsed_time = time.time() - start_time
-    LOGGER.info(f"Finished preprocessing articles. Total time: {elapsed_time:.2f} seconds. Omitted {omit_count} articles with empty text.")
+    LOGGER.info(f"Finished preprocessing articles. Total time: {elapsed_time:.2f} seconds. Omitted {omit_count} articles with empty text.", level=log_lv)
     
 if __name__ == "__main__":#
     preprocess_article()
