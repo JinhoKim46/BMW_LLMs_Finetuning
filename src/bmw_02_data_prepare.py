@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Jinho Kim
+# Licensed under the MIT License. See LICENSE in the project root for license information.
+
 import json
 import re
 import time
